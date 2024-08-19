@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: springboot-deployment
+spec:
+  selector:
+    matchLabels:
+      app: springboot
+  template:
+    metadata:
+      labels:
+        app: springboot
+    spec:
+      containers:
+      - name: springboot
+        image:  prasadwalujkar05/rock:latest
+        ports:
+        - containerPort: 8080
+        env:
+        - name: MYSQL_HOST
+          value: "mysql-service"
+        - name: MYSQL_PORT
+          value: "3306"
+        - name: MYSQL_USER
+          value: "root"
+        - name: MYSQL_PASSWORD
+          value: "root"
+        - name: SPRING_DATASOURCE_URL
+          value: "jdbc:mysql://mysql-service:3306/fooddeliveryapp"
+        - name: SPRING_DATASOURCE_USERNAME
+          value: "root"
+        - name: SPRING_DATASOURCE_PASSWORD
+          value: "root"
+        - name: SPRING_MAIL_HOST 
+          value: "smtp.gmail.com"
+        - name: SPRING_MAIL_PORT 
+          value: "587"
+        - name: SPRING_MAIL_USERNAME 
+          value: "bhagwatpatil11@gmail.com"
+        - name: SPRING_MAIL_PASSWORD 
+          value: "eukcgwezxsqlponso"
